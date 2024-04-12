@@ -5,7 +5,11 @@ from shapely.geometry.base import BaseGeometry
 
 
 def overlay(geometries: Iterable[BaseGeometry]):
-    """First features will be underneath, last feature on top"""
+    """
+    Overlay shapely geometries: cut away the part of shapes that are underneath others.
+
+    First features in input will be underneath, last feature will not be cut.
+    """
     result = []
     s = set()
     tree = STRtree(geometries)
